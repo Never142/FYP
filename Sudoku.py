@@ -251,6 +251,8 @@ def SudokuBoardChange(x,y,num):
             print("Incorrect Choice")
     elif GameBoard.Board[y][x] != 0:#cant delete original puzzle
         GameBoard.Answerboard[y][x] = 0
+    else:
+        GameBoard.Answerboard[y][x] = 0  
 def Validate(InputBoard):
     global ValidateCheck
     ValidateCheck = True
