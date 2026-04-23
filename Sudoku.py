@@ -80,15 +80,18 @@ def LeaderBoardLoad():
         if len(templist)>0:
             del templist[0]
             count = 0
+
             LeaderboardItem = []
             for i in templist:
+                LeaderboardItem.append(int(i))
+                count+=1
                 if count == 2:
                     count = 0
                     LeaderboardList.append(LeaderboardItem)
+                    print(LeaderboardList)
                     LeaderboardItem = []
-                LeaderboardItem.append(int(i))
-                count+=1
         file.close()
+        print(LeaderboardList)
         return LeaderboardList
     except FileNotFoundError:
         LeaderBoardSave(LeaderboardList)
@@ -340,7 +343,7 @@ while True:
         objects.append(Button(440, 470, 400, 100, 'Load', GameBoard.Load,True))
     elif screentrack == 'Leaderboard':
         objects = []
-        objects.append(Button(440, 30, 400, 100, 'Back', ScreenMain,True))
+        objects.append(Button(440, 30, 400, 100, 'Main Menu', ScreenMain,True))
         LeaderBoardlist = []
         LeaderBoardlist = LeaderBoardLoad()
         count = 0
@@ -397,7 +400,7 @@ while True:
             screentrack = "Victory"
             LeaderBoardlist.append([GameBoard.Points,GameBoard.Time])
             LeaderBoardlist.sort()
-            LeaderBoardSave()
+            LeaderBoardSave(LeaderBoardlist)
     elif screentrack  == "Victory":
         objects = []        
         objects.append(Button(440, 30, 400, 100, 'Main Menu', ScreenMain))
